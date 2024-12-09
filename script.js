@@ -4,6 +4,7 @@ function send() {
     let userInput = document.getElementById("txtF").value;
     document.getElementById("user1").innerHTML = `<h3 id="user1">${userInput}</h3>`
     document.getElementById("txtF").value = "";
+    document.getElementById("user2").innerHTML="";
 
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -39,7 +40,7 @@ function send() {
         .then((result) => {
             loader.remove();
             console.log(result.candidates[0].content.parts[0].text)
-            document.getElementById("user2").innerHTML = `<h3 id="user2">${md.render(result.candidates[0].content.parts[0].text)}</h3>`
+            document.getElementById("user2").innerHTML += `<h3 id="user2">${md.render(result.candidates[0].content.parts[0].text)}</h3>`
         })
         .catch((error) => console.error(error));
 }
